@@ -1,0 +1,9 @@
+@font-face {
+   font-family: "toy";
+   src: url("data/fonts/Toy.ttf") format("truetype");
+}
+
+@font-face {
+   font-family: "awkward";
+   src: url("data/fonts/AwkwardExt2.ttf") format("truetype");
+}
