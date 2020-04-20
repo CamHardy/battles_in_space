@@ -1,4 +1,5 @@
-##Notes:
+## Notes:
+
 Small ship base size: 4x4cm (20x20px)
 Play area size: 92x92cm (460x460px)
 Movement rulers:
@@ -8,7 +9,8 @@ Movement rulers:
     Sharp Turn: 90˚ Inner: 2.5/5.3/8cm (12.5/26.5/40px) Outer: 4.5/7.3/10cm (22.5/36.5/50px)
     Range: 10/20/30cm (50/100/150px)
 
-##TODO:
+## TODO:
+
 [ ] design UI/mechanics for all game states
 [ ] refactor menuButton.js to iconButton
 [ ] make textButton.js for buttons with just a label
