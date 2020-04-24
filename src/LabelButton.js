@@ -4,16 +4,15 @@ class LabelButton extends Phaser.GameObjects.Container {
 	constructor(scene, x, y, label) {
 		super(scene, x, y);
 
-		let text = this.scene.add.text(x, y, label.toUpperCase(), {fontFamily: 'awkward', fontSize: '256px'})
-			.setOrigin(0, 0.5)
-			.setScale(0.125);
+		let text = this.scene.add.bitmapText(x, y, 'customfont', label.toUpperCase(), 12)
+			.setOrigin(0, 0.5);
 
-		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, text.width * 0.125, text.height * 0.07), Phaser.Geom.Rectangle.Contains);
+		this.setInteractive(new Phaser.Geom.Rectangle(0, -text.height / 2, text.width, text.height / 2), Phaser.Geom.Rectangle.Contains);
 		this.on('pointerover', () => {
-    	 	text.setFill('#00ff00');
+    	 	text.setTint(0x00ff00);
     	}, this);
     	this.on('pointerout', () => {
-    	 	text.setFill('#ffffff');
+    	 	text.setTint(0xffffff);
     	}, this);
 
 		this.scene.add.existing(this);

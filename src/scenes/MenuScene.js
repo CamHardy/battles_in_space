@@ -21,12 +21,12 @@ class MenuScene extends Phaser.Scene {
     preload() {}
 
     create() {
-    	this.add.text(config.width/2, 40, 'CHOOSE A FACTION:', {fontFamily: 'awkward', fontSize: '256px'})
+    	this.add.bitmapText(config.width/2, 60, 'customfont', 'CHOOSE A FACTION:', 24)
             .setOrigin(0.5)
-            .setScale(0.25);
+            .setTint(0xffd515);
 
     	for (let i in this.factionItems) {
-    		new IconButton(this, config.width / 2, i * 50 + 110, this.factionItems[i]);
+    		new IconButton(this, config.width / 2 - 100, i * 50 + 110, this.factionItems[i]);
     	}
     }
     

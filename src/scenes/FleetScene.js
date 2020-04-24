@@ -18,26 +18,25 @@ class FleetScene extends Phaser.Scene {
 	preload() {}
 
 	create() {
-		this.add.text(config.width/2, 40, 'BUILD YOUR FLEET', {fontFamily: 'awkward', fontSize: '256px'})
+		this.add.bitmapText(config.width/2, 60, 'customfont', 'BUILD YOUR FLEET', 24)
 			.setOrigin(0.5)
-			.setScale(0.25);
-		this.prtext = this.add.text(config.width - 15, config.height - 30, `POINTS REMAINING: ${this.pointsRemaining}`, {fontFamily: 'awkward', fontSize: '256px'})
+			.setTint(0xffd515);
+		this.prtext = this.add.bitmapText(config.width - 10, config.height - 10, 'customfont', `POINTS REMAINING: ${this.pointsRemaining}`, 12)
 			.setOrigin(1, 0.5)
-			.setScale(0.125);
+			.setTint(0xffd515);
 
 		// display GO button if at least one ship and one pilot are selected, and pointsRemaining >= 0
-		this.goButton = this.add.text(config.width / 2, config.height - 40, 'GO!', {fontFamily: 'awkward', fontSize: '256px'})
+		this.goButton = this.add.bitmapText(config.width / 2, config.height - 40, 'customfont', 'GO!', 24)
 			.setOrigin(0.5)
-			.setScale(0.25)
-			.setFill('#00ff00')
-			.setVisible(false);
+			.setTint(0x00ff00)
+			.setVisible(true);
 
-		this.goButton.setInteractive(new Phaser.Geom.Rectangle(0, 140, this.goButton.width, 100), Phaser.Geom.Rectangle.Contains);
+		this.goButton.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.goButton.width, this.goButton.height / 2), Phaser.Geom.Rectangle.Contains);
 		this.goButton.on('pointerover', () => {
-			this.goButton.setFill('#ffffff');
+			this.goButton.setTint(0xffffff);
 		}, this);
 		this.goButton.on('pointerout', () => {
-			this.goButton.setFill('#00ff00');
+			this.goButton.setTint(0x00ff00);
 		}, this);
 		this.goButton.on('pointerup', () => {
 			// go to the next scene
@@ -62,9 +61,8 @@ class FleetScene extends Phaser.Scene {
 		// 5. repeat 2-4 maybe
 		// 6. remove/change ships/pilots/upgrades
 		
-		this.add.text(config.width/2, 140, `YOUR FACTION IS: ${this.faction.toUpperCase()}`, {fontFamily: 'awkward', fontSize: '256px'})
-			.setOrigin(0.5)
-			.setScale(0.125);
+		this.add.bitmapText(config.width/2, 120, 'customfont', `YOUR FACTION IS: ${this.faction.toUpperCase()}`, 12)
+			.setOrigin(0.5);
 
 		for (let s in this.availableShips) {
 			new LabelButton(this, 10, 200 + 50 * s, this.availableShips[s].name);
@@ -81,7 +79,7 @@ class FleetScene extends Phaser.Scene {
 
 	update() {
 		this.prtext.text = `POINTS REMAINING: ${this.pointsRemaining}`;
-		this.prtext.setFill(this.pointsRemaining > 0 ? '#ffffff' : '#ff0000');
+		this.prtext.setTint(this.pointsRemaining > 0 ? 0xffffff : 0xff0000);
 		if (this.selectedFleet.length && this.pointsRemaining >= 0) {
 			this.goButton.setVisible(true);
 		}

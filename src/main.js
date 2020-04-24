@@ -1,6 +1,7 @@
 var game;
 var config = {
-    antialias: false,
+    pixelArt: true,
+    zoom: 2,
     type: Phaser.AUTO,
     width: 460,
     height: 460,
@@ -9,12 +10,11 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            debug: false
         }
     },
     // REMOVED FOR TESTING
-    scene: [LoadScene, MenuScene, FleetScene, GameScene],
-    scale: 2
+    scene: [LoadScene, TitleScene, MenuScene, FleetScene, GameScene]
 };
 
 window.addEventListener('load', () => {
